@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Give us Feedback</title>
+    <script type="text/javascript">
+         // Function which checks phone number
+         function checkPhoneNumber(phno) {
+             if (isNaN(phno))
+             {
+                 return false;
+             } else {
+                 return true;
+             }
+         }
+
+         // Function which checks email.
+         function checkEmail(x) {
+             var atpos = x.indexOf("@");
+             var dotpos = x.lastIndexOf(".");
+             if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+                 return false;
+             } else {
+                 return true;
+             }
+         }
+
+         function formSubmit() {
+             var name = document.getElementById('name').value;
+             var phoneNo = document.getElementById('phone').value;
+             var email = document.getElementById('email').value;
+
+             if (name == '') {
+                 alert('Please enter name');
+                 return false;
+             } else
+             if (phoneNo == '') {
+                 alert('Please enter phone number');
+                 return false;
+             } else
+             if (email == '') {
+                 alert('Please enter email');
+                 return false;
+             } else
+             if (!checkPhoneNumber(phoneNo)) {
+                 alert('Please enter valid phone number');
+                 return false;
+             } else
+             if (!checkEmail(email)) {
+                 alert('Please enter valid email address');
+                 return false;
+             }
+
+             document.location.href = "thankyou.html";
+         }
+    </script>
+</head>
+<body>
+
+<form id="feedForm" name="feedForm" action="">
+    <table align="center" border="1" width="30%">
+        <thead>
+           <tr><th colspan="2">Give us Feedback</th></tr>
+        </thead>
+        <tbody>
+           <tr><td>Name: <span style="color: red">*</span></td> <td><input type="text" placeholder="Name" id="name"></td></tr>
+           <tr><td>Phone No: <span style="color: red">*</span></td> <td><input type="text" placeholder="Phone" id="phone"></td></tr>
+           <tr><td>Email: <span style="color: red">*</span></td> <td><input type="text" placeholder="Email" id="email"></td></tr>
+           <tr><td>Comment: </td> <td><textarea id="comments" placeholder="Comment" width="300px;"> </textarea></td></tr>
+           <tr><td colspan="2" align="center"> <input type="button" value="Submit" onclick="formSubmit()"> </td></tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
